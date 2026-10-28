@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Fundamentals: Intelligent Greenhouses of Astana</title>
+    <!-- Tailwind CSS for modern styling and responsiveness -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- All CSS embedded directly in the file (No external stylesheet required) -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        /* Custom scrollbar for sidebar and main content */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        /* Smooth section transitions */
+        section.page {
+            scroll-margin-top: 1rem;
+        }
+    </style>
+</head>
+<body class="flex flex-col md:flex-row min-h-screen m-0 p-0">
+
+    <!-- Mobile Header -->
+    <header class="md:hidden bg-slate-900 text-white p-4 flex justify-between items-center sticky top-0 z-50 shadow-md">
+        <h1 class="font-bold text-lg">AI Book: Astana Greenhouses</h1>
+        <button id="menu-toggle" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 focus:outline-none" aria-label="Toggle Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar" class="fixed md:sticky top-0 h-screen w-72 bg-slate-900 text-slate-300 flex flex-col z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out border-r border-slate-800 shadow-xl overflow-y-auto">
+        <div class="p-6 border-b border-slate-800">
+            <span class="text-xs uppercase tracking-wider text-emerald-400 font-semibold">Interactive Book</span>
+            <h2 class="text-xl font-bold text-white mt-1">Astana Greenhouses AI</h2>
+        </div>
+        <ul id="nav-links" class="flex-1 px-4 py-4 space-y-1 text-sm">
+            <li><a href="#cover" class="nav-link flex items-center px-3 py-2.5 rounded-lg transition-colors font-medium text-white bg-emerald-600 shadow-sm" data-target="cover">Обложка</a></li>
+            <li><a href="#page1" class="nav-link flex items-center px-3 py-2.5 rounded-lg transition-colors hover:bg-slate-800 hover:text-white" data-target="page1">1. Frozen Horizon</a></li>
+            <li><a href="#page2" class="nav-link flex items-center px-3 py-2.5 rounded-lg transition-colors hover:bg-slate-800 hover:text-white" data-target="page2">2. Simple Reflex Agent</a></li>
+            <li><a href="#page3" class="nav-link flex items-center px-3 py-2.5 rounded-lg transition-colors hover:bg-slate-800 hover:text-white" data-target="page3">3. PEAS & Environment</a></li>
+            <li><a href="#page4" class="nav-link flex items-center px-3 py-2.5 rounded-lg transition-colors hover:bg-slate-800 hover:text-white" data-target="page4">4. Uninformed Search (BFS)</a></li>
+            <li><a href="#page5" class="nav-link flex items-center px-3 py-2.5 rounded-lg transition-colors hover:bg-slate-800 hover:text-white" data-target="page5">5. DFS & Memory Trade-offs</a></li>
+            <li><a href="#page6" class="nav-link flex items-center px-3 py-2.5 rounded-lg transition-colors hover:bg-slate-800 hover:text-white" data-target="page6">6. Uniform Cost Search (UCS)</a></li>
+            <li><a href="#page7" class="nav-link flex items-center px-3 py-2.5 rounded-lg transition-colors hover:bg-slate-800 hover:text-white" data-target="page7">7. Informed Search: A*</a></li>
+            <li><a href="#page8" class="nav-link flex items-center px-3 py-2.5 rounded-lg transition-colors hover:bg-slate-800 hover:text-white" data-target="page8">8. Local Search & Hill Climbing</a></li>
+            <li><a href="#page9" class="nav-link flex items-center px-3 py-2.5 rounded-lg transition-colors hover:bg-slate-800 hover:text-white" data-target="page9">9. Simulated Annealing</a></li>
+            <li><a href="#page10" class="nav-link flex items-center px-3 py-2.5 rounded-lg transition-colors hover:bg-slate-800 hover:text-white" data-target="page10">10. Genetic Algorithms</a></li>
+            <li><a href="#page11" class="nav-link flex items-center px-3 py-2.5 rounded-lg transition-colors hover:bg-slate-800 hover:text-white" data-target="page11">11. Adversarial Search & Minimax</a></li>
+            <li><a href="#page12" class="nav-link flex items-center px-3 py-2.5 rounded-lg transition-colors hover:bg-slate-800 hover:text-white" data-target="page12">12. Alpha-Beta Pruning</a></li>
+            <li><a href="#page13" class="nav-link flex items-center px-3 py-2.5 rounded-lg transition-colors hover:bg-slate-800 hover:text-white" data-target="page13">13. Markov Decision Processes</a></li>
+            <li><a href="#page14" class="nav-link flex items-center px-3 py-2.5 rounded-lg transition-colors hover:bg-slate-800 hover:text-white" data-target="page14">14. Value Iteration & Bellman</a></li>
+            <li><a href="#page15" class="nav-link flex items-center px-3 py-2.5 rounded-lg transition-colors hover:bg-slate-800 hover:text-white" data-target="page15">15. RL & Hidden Markov Models</a></li>
+        </ul>
+        <div class="p-4 border-t border-slate-800 text-xs text-slate-500 text-center">
+            AI Fundamentals End-Term Project
+        </div>
+    </nav>
+
+    <!-- Overlay for mobile sidebar -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden"></div>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+
+        <!-- Cover Section -->
+        <section id="cover" class="page min-h-screen flex items-center justify-center p-6 md:p-12 bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 text-white relative">
+            <div class="max-w-3xl mx-auto text-center space-y-6">
+                <span class="inline-block px-4 py-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full text-xs font-semibold tracking-wider uppercase">End-Term Assignment</span>
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">The Intelligent Greenhouses of Astana</h1>
+                <p class="text-xl md:text-2xl text-slate-300 font-light">A Journey Through AI: From Reflex Agents to Markov Decision Processes</p>
+                <div class="pt-6 border-t border-slate-800 max-w-md mx-auto">
+                    <p class="text-sm text-slate-400"><strong>Project authors:</strong> Arsen Nagmet, Daryn Bolatov</p>
+                </div>
+                <div class="pt-4">
+                    <a href="#page1" class="inline-flex items-center justify-center px-8 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl shadow-lg shadow-emerald-900/50 transition-all transform hover:-translate-y-0.5">
+                        Start reading book
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 1 -->
+        <section id="page1" class="page min-h-screen flex flex-col justify-between p-8 md:p-16 max-w-4xl mx-auto w-full border-b border-slate-200">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between text-xs text-slate-400 uppercase tracking-widest font-semibold">
+                    <span>chapter 1 of 15</span>
+                    <span>Introduction</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Page 1: Introduction to the Frozen Horizon</h2>
+                <div class="prose prose-slate max-w-none space-y-4 text-slate-600 leading-relaxed text-lg">
+                    <p>The winter wind howled across the snow-covered steppes surrounding Astana, Kazakhstan, sweeping past the monumental futuristic towers of the city. Outside, temperatures routinely plummeted far below freezing. Yet, inside a sprawling state-of-the-art agricultural complex, rows of lush green crops thrived under warm LED lights.</p>
+                    <p>This modern miracle was not maintained entirely by human hands. It was the domain of autonomous artificial intelligence systems designed to protect fragile life against a harsh, stochastic environment. In this book, we explore the core paradigms of AI—from simple reflex agents to complex decision-theoretic planning—using the lifeblood of this greenhouse as our guiding narrative.</p>
+                </div>
+                <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 rounded-r-xl">
+                    <p class="text-sm text-emerald-900"><strong>💡 Context:</strong> Astana’s harsh climatic environment serves as an ideal testing ground for demonstrating the need for adaptive artificial intelligence algorithms.</p>
+                </div>
+            </div>
+            <div class="flex justify-between pt-12 text-sm font-medium">
+                <a href="#cover" class="text-slate-500 hover:text-slate-900 flex items-center">← Back to cover</a>
+                <a href="#page2" class="text-emerald-600 hover:text-emerald-700 flex items-center">Next page →</a>
+            </div>
+        </section>
+
+        <!-- Page 2 -->
+        <section id="page2" class="page min-h-screen flex flex-col justify-between p-8 md:p-16 max-w-4xl mx-auto w-full border-b border-slate-200">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between text-xs text-slate-400 uppercase tracking-widest font-semibold">
+                    <span>chapter 2 of 15</span>
+                    <span>Reflection system</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Page 2: The Simple Reflex Agent</h2>
+                <div class="prose prose-slate max-w-none space-y-4 text-slate-600 leading-relaxed text-lg">
+                    <p>Our story begins with a humble guardian: a simple reflex agent embedded in the environmental control box of Sector 1. Unlike advanced planning systems, a reflex agent operates on a strict, instantaneous loop: <strong>PERCEIVE → DECIDE → ACT</strong>.</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Sensors:</strong> Continuously measure temperature, humidity, and soil moisture.</li>
+                        <li><strong>Condition-Action Rules:</strong> Maps current sensor readings directly to physical interventions without maintaining a history or looking ahead.</li>
+                    </ul>
+                    <p>When the temperature sensor inside Sector 1 dropped to 17°C, the agent didn't ponder the historical weather patterns of Kazakhstan; it evaluated its rules and immediately executed <code>TURN_HEATER_ON</code>. One percept led directly to one decision, ensuring rapid survival reflexes.</p>
+                </div>
+            </div>
+            <div class="flex justify-between pt-12 text-sm font-medium">
+                <a href="#page1" class="text-slate-500 hover:text-slate-900 flex items-center">← Back</a>
+                <a href="#page3" class="text-emerald-600 hover:text-emerald-700 flex items-center">Next page →</a>
+            </div>
+        </section>
+
+        <!-- Page 3 -->
+        <section id="page3" class="page min-h-screen flex flex-col justify-between p-8 md:p-16 max-w-4xl mx-auto w-full border-b border-slate-200">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between text-xs text-slate-400 uppercase tracking-widest font-semibold">
+                    <span>chapter 3 of 15</span>
+                    <span>Environment modeling</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Page 3: PEAS and Environmental Classification</h2>
+                <div class="prose prose-slate max-w-none space-y-4 text-slate-600 leading-relaxed text-lg">
+                    <p>To formally engineer our greenhouse caretaker, we define its operational scope using the <strong>PEAS</strong> framework:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="font-bold text-slate-900 mb-1">Performance </h4>
+                            <p class="text-sm text-slate-600">Maintain healthy crop conditions while minimizing water and energy waste.</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="font-bold text-slate-900 mb-1">Environment</h4>
+                            <p class="text-sm text-slate-600">Greenhouse air, soil beds, water reservoirs, and heating/ventilation equipment.</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="font-bold text-slate-900 mb-1">Actuators </h4>
+                            <p class="text-sm text-slate-600">Heaters, exhaust fans, ventilation windows, and irrigation valves.</p>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <h4 class="font-bold text-slate-900 mb-1">Sensors </h4>
+                            <p class="text-sm text-slate-600">Temperature, humidity, and soil-moisture detectors.</p>
+                        </div>
+                    </div>
+                    <p class="pt-2">Furthermore, the greenhouse environment is classified as <strong>partially observable</strong>, <strong>stochastic</strong>, and <strong>dynamic</strong>.</p>
+                </div>
+            </div>
+            <div class="flex justify-between pt-12 text-sm font-medium">
+                <a href="#page2" class="text-slate-500 hover:text-slate-900 flex items-center">← Back</a>
+                <a href="#page4" class="text-emerald-600 hover:text-emerald-700 flex items-center">Next page →</a>
+            </div>
+        </section>
+
+        <!-- Page 4 -->
+        <section id="page4" class="page min-h-screen flex flex-col justify-between p-8 md:p-16 max-w-4xl mx-auto w-full border-b border-slate-200">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between text-xs text-slate-400 uppercase tracking-widest font-semibold">
+                    <span>chapter 4 of 15</span>
+                    <span>State-space search</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Page 4: Uninformed Search – Navigating the City Map</h2>
+                <div class="prose prose-slate max-w-none space-y-4 text-slate-600 leading-relaxed text-lg">
+                    <p>While reflex agents handle local loops, an intelligent transport drone must navigate shipments across Kazakhstan—for instance, finding a route from Astana to Almaty.</p>
+                    <p>In uninformed search problems, the agent models a state space (cities), a start state (Astana), a goal test (<code>state == Almaty</code>), and a successor function (roads with distance costs). Using <strong>Breadth-First Search (BFS)</strong>, the drone explores the state space level by level using a FIFO queue. BFS guarantees the shortest path measured in the number of edges, though it ignores varying road lengths.</p>
+                </div>
+            </div>
+            <div class="flex justify-between pt-12 text-sm font-medium">
+                <a href="#page3" class="text-slate-500 hover:text-slate-900 flex items-center">← Back</a>
+                <a href="#page5" class="text-emerald-600 hover:text-emerald-700 flex items-center">Next page →</a>
+            </div>
+        </section>
+
+        <!-- Page 5 -->
+        <section id="page5" class="page min-h-screen flex flex-col justify-between p-8 md:p-16 max-w-4xl mx-auto w-full border-b border-slate-200">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between text-xs text-slate-400 uppercase tracking-widest font-semibold">
+                    <span>Chapter 5 of 15</span>
+                    <span>Search algorithms</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Page 5: Depth-First Search and Memory Trade-offs</h2>
+                <div class="prose prose-slate max-w-none space-y-4 text-slate-600 leading-relaxed text-lg">
+                    <p>Alternatively, <strong>Depth-First Search (DFS)</strong> explores a single branch as deeply as possible before backtracking, utilizing a LIFO stack.</p>
+                    <p>In vast search spaces where memory is severely constrained, DFS can slip through narrow branches with a minimal memory footprint <i>O(b^m)</i>. However, unlike BFS, DFS offers no guarantee of finding the shortest or optimal path. When transporting fragile biological samples across complex routing trees, choosing between BFS's breadth and DFS's depth depends entirely on memory availability and path guarantees.</p>
+                </div>
+            </div>
+            <div class="flex justify-between pt-12 text-sm font-medium">
+                <a href="#page4" class="text-slate-500 hover:text-slate-900 flex items-center">← Back</a>
+                <a href="#page6" class="text-emerald-600 hover:text-emerald-700 flex items-center">Next page →</a>
+            </div>
+        </section>
+
+        <!-- Page 6 -->
+        <section id="page6" class="page min-h-screen flex flex-col justify-between p-8 md:p-16 max-w-4xl mx-auto w-full border-b border-slate-200">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between text-xs text-slate-400 uppercase tracking-widest font-semibold">
+                    <span>Chapter 6 of 15</span>
+                    <span>Cost optimization</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Page 6: Cost-Sensitive Search – Uniform Cost Search (UCS)</h2>
+                <div class="prose prose-slate max-w-none space-y-4 text-slate-600 leading-relaxed text-lg">
+                    <p>When road distances and fuel costs vary significantly across the Kazakh steppe, BFS and DFS fall short. A route via Karaganda and Balkhash might have a very different cost than an eastern path through Pavlodar and Semey.</p>
+                    <p><strong>Uniform Cost Search (UCS)</strong> solves this by prioritizing the frontier node with the lowest cumulative path cost, <i>g(n)</i>, using a priority queue (min-heap). Provided edge costs are non-negative, UCS is both complete and optimal, always expanding the cheapest accumulated path first.</p>
+                </div>
+            </div>
+            <div class="flex justify-between pt-12 text-sm font-medium">
+                <a href="#page5" class="text-slate-500 hover:text-slate-900 flex items-center">← Back</a>
+                <a href="#page7" class="text-emerald-600 hover:text-emerald-700 flex items-center">Next page →</a>
+            </div>
+        </section>
+
+        <!-- Page 7 -->
+        <section id="page7" class="page min-h-screen flex flex-col justify-between p-8 md:p-16 max-w-4xl mx-auto w-full border-b border-slate-200">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between text-xs text-slate-400 uppercase tracking-widest font-semibold">
+                    <span>Chapter 7 of 15</span>
+                    <span>Euristic search</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Page 7: Informed Search – The Power of A*</h2>
+                <div class="prose prose-slate max-w-none space-y-4 text-slate-600 leading-relaxed text-lg">
+                    <p>To accelerate navigation without exhaustively expanding every low-cost node, the drone upgrades to <strong>A* Search</strong>. A* combines past actual cost <i>g(n)</i> with an estimated future heuristic <i>h(n)</i> representing the straight-line distance to the goal:</p>
+                    <div class="p-4 bg-slate-900 text-emerald-400 rounded-xl font-mono text-center text-xl shadow-inner">
+                        f(n) = g(n) + h(n)
+                    </div>
+                    <p>By ordering the frontier by total estimated cost <i>f(n)</i>, A* acts like UCS guided by a reliable compass. For A* to maintain mathematical optimality, the heuristic must be admissible—meaning it never overestimates the true remaining cost.</p>
+                </div>
+            </div>
+            <div class="flex justify-between pt-12 text-sm font-medium">
+                <a href="#page6" class="text-slate-500 hover:text-slate-900 flex items-center">← Back</a>
+                <a href="#page8" class="text-emerald-600 hover:text-emerald-700 flex items-center">Next page →</a>
+            </div>
+        </section>
+
+        <!-- Page 8 -->
+        <section id="page8" class="page min-h-screen flex flex-col justify-between p-8 md:p-16 max-w-4xl mx-auto w-full border-b border-slate-200">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between text-xs text-slate-400 uppercase tracking-widest font-semibold">
+                    <span>Chapter 8 of 15</span>
+                    <span>Local search </span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Page 8: Local Search – Optimizing Configuration Spaces</h2>
+                <div class="prose prose-slate max-w-none space-y-4 text-slate-600 leading-relaxed text-lg">
+                    <p>Sometimes, the path taken to reach a solution is completely irrelevant; only the final configuration matters. Consider placing three backup environmental sensors across the greenhouse to minimize total network interference.</p>
+                    <p><strong>Hill Climbing</strong> starts from a random configuration, evaluates its neighbors, and greedily moves to any adjacent state that improves the objective function. While fast and memory-efficient, simple hill climbing suffers from major structural traps: <strong>local maxima</strong>, <strong>plateaus</strong>, and <strong>ridges</strong>.</p>
+                </div>
+            </div>
+            <div class="flex justify-between pt-12 text-sm font-medium">
+                <a href="#page7" class="text-slate-500 hover:text-slate-900 flex items-center">← Back</a>
+                <a href="#page9" class="text-emerald-600 hover:text-emerald-700 flex items-center">Next page →</a>
+            </div>
+        </section>
+
+        <!-- Page 9 -->
+        <section id="page9" class="page min-h-screen flex flex-col justify-between p-8 md:p-16 max-w-4xl mx-auto w-full border-b border-slate-200">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between text-xs text-slate-400 uppercase tracking-widest font-semibold">
+                    <span>Chapter 9 of 15</span>
+                    <span>Simulated annealing</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Page 9: Escaping Local Traps – Simulated Annealing</h2>
+                <div class="prose prose-slate max-w-none space-y-4 text-slate-600 leading-relaxed text-lg">
+                    <p>To prevent the greenhouse optimization algorithm from freezing at a suboptimal local peak, engineers deploy <strong>Simulated Annealing</strong>.</p>
+                    <p>Modeled after metallurgical annealing, this algorithm occasionally accepts worse neighboring states with a probability determined by temperature <i>T</i>:</p>
+                    <div class="p-4 bg-slate-900 text-emerald-400 rounded-xl font-mono text-center text-xl shadow-inner">
+                        P(accept worse) = e^(ΔE / T)
+                    </div>
+                    <p>At high temperatures early in the search, the system willingly explores valleys and crosses low ridges. As the temperature cools down, the algorithm transitions from broad exploration to fine exploitation.</p>
+                </div>
+            </div>
+            <div class="flex justify-between pt-12 text-sm font-medium">
+                <a href="#page8" class="text-slate-500 hover:text-slate-900 flex items-center">← Back</a>
+                <a href="#page10" class="text-emerald-600 hover:text-emerald-700 flex items-center">Next page →</a>
+            </div>
+        </section>
+
+        <!-- Page 10 -->
+        <section id="page10" class="page min-h-screen flex flex-col justify-between p-8 md:p-16 max-w-4xl mx-auto w-full border-b border-slate-200">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between text-xs text-slate-400 uppercase tracking-widest font-semibold">
+                    <span>Chapter 10 of 15</span>
+                    <span>Genetic algorithms</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Page 10: Population-Based Search – Genetic Algorithms</h2>
+                <div class="prose prose-slate max-w-none space-y-4 text-slate-600 leading-relaxed text-lg">
+                    <p>When configuring complex multi-zone ventilation schedules involving dozens of interdependent variables, individual local search paths are insufficient. <strong>Genetic Algorithms (GAs)</strong> maintain an entire population of candidate solutions.</p>
+                    <p>Operating on principles inspired by natural selection, GAs evaluate a fitness function, select superior parent solutions, combine their traits via <strong>crossover</strong>, and introduce random variations through <strong>mutation</strong>. This preserves genetic diversity across the search space.</p>
+                </div>
+            </div>
+            <div class="flex justify-between pt-12 text-sm font-medium">
+                <a href="#page9" class="text-slate-500 hover:text-slate-900 flex items-center">← Back</a>
+                <a href="#page11" class="text-emerald-600 hover:text-emerald-700 flex items-center">Next page →</a>
+            </div>
+        </section>
+
+        <!-- Page 11 -->
+        <section id="page11" class="page min-h-screen flex flex-col justify-between p-8 md:p-16 max-w-4xl mx-auto w-full border-b border-slate-200">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between text-xs text-slate-400 uppercase tracking-widest font-semibold">
+                    <span>Chapter 11 of 15</span>
+                    <span>Adversarial search</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Page 11: Adversarial Search – Game Trees and Minimax</h2>
+                <div class="prose prose-slate max-w-none space-y-4 text-slate-600 leading-relaxed text-lg">
+                    <p>Intelligence also requires reasoning about competing agents. Imagine an automated resource-allocation game where our greenhouse management AI (MAX) competes against an unpredictable energy-grid pricing algorithm (MIN).</p>
+                    <p>The <strong>Minimax</strong> algorithm constructs a game tree alternating between MAX and MIN nodes. Assuming both players act rationally, MAX selects the move that maximizes the minimum guaranteed outcome against an optimal adversary. Because full game trees grow exponentially, full evaluation is often computationally intractable.</p>
+                </div>
+            </div>
+            <div class="flex justify-between pt-12 text-sm font-medium">
+                <a href="#page10" class="text-slate-500 hover:text-slate-900 flex items-center">← Back</a>
+                <a href="#page12" class="text-emerald-600 hover:text-emerald-700 flex items-center">Next page →</a>
+            </div>
+        </section>
+
+        <!-- Page 12 -->
+        <section id="page12" class="page min-h-screen flex flex-col justify-between p-8 md:p-16 max-w-4xl mx-auto w-full border-b border-slate-200">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between text-xs text-slate-400 uppercase tracking-widest font-semibold">
+                    <span>Chapter 12 of 15</span>
+                    <span>Alpha-Beta Pruning</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Page 12: Alpha-Beta Pruning and Depth Limits</h2>
+                <div class="prose prose-slate max-w-none space-y-4 text-slate-600 leading-relaxed text-lg">
+                    <p>To make adversarial search viable in real-time control scenarios, <strong>Alpha-Beta Pruning</strong> is integrated into Minimax. By maintaining bounds (α for MAX's best option, β for MIN's best option), the algorithm safely cuts off branches that cannot influence the final decision.</p>
+                    <p>When real-time limits prevent searching to terminal game states, agents employ depth-limited minimax, cutting off the search at depth <i>d</i> and estimating state values using evaluation functions <i>h(s)</i>.</p>
+                </div>
+            </div>
+            <div class="flex justify-between pt-12 text-sm font-medium">
+                <a href="#page11" class="text-slate-500 hover:text-slate-900 flex items-center">← Back</a>
+                <a href="#page13" class="text-emerald-600 hover:text-emerald-700 flex items-center">Next page →</a>
+            </div>
+        </section>
+
+        <!-- Page 13 -->
+        <section id="page13" class="page min-h-screen flex flex-col justify-between p-8 md:p-16 max-w-4xl mx-auto w-full border-b border-slate-200">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between text-xs text-slate-400 uppercase tracking-widest font-semibold">
+                    <span>Chapter 13 of 15</span>
+                    <span>Markov Decision Processes</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Page 13: Markov Decision Processes (MDPs)</h2>
+                <div class="prose prose-slate max-w-none space-y-4 text-slate-600 leading-relaxed text-lg">
+                    <p>When action outcomes are uncertain and stochastic, single paths and deterministic game trees are replaced by <strong>Markov Decision Processes (MDPs)</strong>. An MDP formalizes sequential decision-making through five core components:</p>
+                    <div class="p-5 bg-white rounded-xl border border-slate-200 shadow-sm font-mono text-sm space-y-2">
+                        <div>ℳ = (𝒮, 𝒜, 𝒫, ℛ, γ)</div>
+                        <div class="text-slate-600 font-sans text-xs pt-2">
+                            • 𝒮: State space<br>
+                            • 𝒜: Available actions<br>
+                            • 𝒫(s'|s,a): Transition probability model<br>
+                            • ℛ(s,a,s'): Immediate rewards/costs<br>
+                            • γ: Discount factor [0,1]
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between pt-12 text-sm font-medium">
+                <a href="#page12" class="text-slate-500 hover:text-slate-900 flex items-center">← Back</a>
+                <a href="#page14" class="text-emerald-600 hover:text-emerald-700 flex items-center">Next page→</a>
+            </div>
+        </section>
+
+        <!-- Page 14 -->
+        <section id="page14" class="page min-h-screen flex flex-col justify-between p-8 md:p-16 max-w-4xl mx-auto w-full border-b border-slate-200">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between text-xs text-slate-400 uppercase tracking-widest font-semibold">
+                    <span>Chapter 14 of 15</span>
+                    <span>Value Iteration</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Page 14: Value Iteration and Bellman Optimality</h2>
+                <div class="prose prose-slate max-w-none space-y-4 text-slate-600 leading-relaxed text-lg">
+                    <p>To solve an MDP when models are fully known, agents use <strong>Value Iteration</strong>. Rooted in the <strong>Bellman Optimality Equation</strong>, value iteration recursively updates state values:</p>
+                    <div class="p-4 bg-slate-900 text-emerald-400 rounded-xl font-mono text-center text-xs md:text-sm shadow-inner overflow-x-auto">
+                        V<sub>k+1</sub>(s) = max<sub>a</sub> Σ<sub>s'</sub> 𝒫(s'|s,a) [ ℛ(s,a,s') + γ V<sub>k</sub>(s') ]
+                    </div>
+                    <p>Through repeated sweeps across the state space, value information propagates backward until estimates stabilize, yielding an optimal policy π(s).</p>
+                </div>
+            </div>
+            <div class="flex justify-between pt-12 text-sm font-medium">
+                <a href="#page13" class="text-slate-500 hover:text-slate-900 flex items-center">← Back</a>
+                <a href="#page15" class="text-emerald-600 hover:text-emerald-700 flex items-center">Next page →</a>
+            </div>
+        </section>
+
+        <!-- Page 15 -->
+        <section id="page15" class="page min-h-screen flex flex-col justify-between p-8 md:p-16 max-w-4xl mx-auto w-full">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between text-xs text-slate-400 uppercase tracking-widest font-semibold">
+                    <span>Chapter 15 of 15</span>
+                    <span>Conclusion and RL</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Page 15: Reinforcement Learning & Hidden Markov Models</h2>
+                <div class="prose prose-slate max-w-none space-y-4 text-slate-600 leading-relaxed text-lg">
+                    <p>When transition and reward models are unknown, the system shifts from planning to <strong>Reinforcement Learning (RL)</strong>. Using Q-learning, an agent interacts with the greenhouse environment through trial and error via temporal-difference error.</p>
+                    <p>Finally, what happens when sensors are noisy and true internal states are hidden? <strong>Hidden Markov Models (HMMs)</strong> combine transition probabilities with emission likelihoods through filtering, ensuring absolute clarity beneath Astana's freezing winter skies.</p>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 p-5 rounded-xl">
+                    <h4 class="font-bold text-emerald-900 mb-1">🏁 The book is complete!</h4>
+                    <p class="text-sm text-emerald-700">You have successfully completed all 15 sections of our interactive project on artificial intelligence.</p>
+                </div>
+            </div>
+            <div class="flex justify-between pt-12 text-sm font-medium">
+                <a href="#page14" class="text-slate-500 hover:text-slate-900 flex items-center">← Back</a>
+                <a href="#cover" class="text-emerald-600 hover:text-emerald-700 font-bold flex items-center">To the beginning of the book ↺</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Interactive JS for Navigation Highlight and Mobile Sidebar Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebar-overlay');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('section.page');
+
+            function toggleSidebar() {
+                sidebar.classList.toggle('-translate-x-full');
+                sidebarOverlay.classList.toggle('hidden');
+            }
+
+            if(menuToggle) menuToggle.addEventListener('click', toggleSidebar);
+            if(sidebarOverlay) sidebarOverlay.addEventListener('click', toggleSidebar);
+
+            // Close sidebar on mobile when a link is clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768) {
+                        toggleSidebar();
+                    }
+                });
+            });
+
+            // Highlight active sidebar item on scroll
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -70% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            if (link.getAttribute('data-target') === id) {
+                                link.classList.add('bg-emerald-600', 'text-white', 'shadow-sm');
+                                link.classList.remove('hover:bg-slate-800', 'hover:text-white', 'text-slate-300');
+                            } else {
+                                link.classList.remove('bg-emerald-600', 'text-white', 'shadow-sm');
+                                link.classList.add('text-slate-300', 'hover:bg-slate-800', 'hover:text-white');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            pages.forEach(page => observer.observe(page));
+        });
+    </script>
+
+</body>
+</html>
